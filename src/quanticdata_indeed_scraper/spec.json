@@ -1,0 +1,75 @@
+{
+ "cli": "indeed-scraper",
+ "name": "Indeed Scraper",
+ "version": "0.1.0",
+ "description": "Indeed scraper for Python and the command line: job listings for a role and location with structured salary ranges, benefits, employer rating and posting date, as JSON or CSV. Free and open source; sign in with your QuanticData account, no browser extension, proxies or headless browser to run.",
+ "links": {
+  "repo": "https://github.com/quantumproxies/indeed-scraper",
+  "page": "https://quanticdata.io/collectors/indeed-jobs-api/?utm_source=github&utm_medium=cli&utm_campaign=indeed-scraper",
+  "billing": "https://app.quanticdata.io/billing?utm_source=github&utm_medium=cli&utm_campaign=indeed-scraper",
+  "pricing": "https://quanticdata.io/pricing/?utm_source=github&utm_medium=cli&utm_campaign=indeed-scraper"
+ },
+ "commands": [
+  {
+   "name": "jobs",
+   "collector": "indeed_jobs",
+   "method": "jobs",
+   "help": "Indeed job listings for a role and location",
+   "description": "Indeed job listings for a role and a location, with structured salary ranges, from the Indeed site of the country you pick.",
+   "positional": "query",
+   "positional_is_list": false,
+   "positional_optional": false,
+   "columns": [
+    "rank",
+    "title",
+    "company",
+    "location",
+    "salary_text",
+    "posted_at"
+   ],
+   "sample": "indeed_jobs",
+   "inputs": [
+    {
+     "name": "query",
+     "type": "string",
+     "required": true,
+     "description": "Job title or keywords, e.g. \"data engineer\".",
+     "arg": "query"
+    },
+    {
+     "name": "location",
+     "type": "string",
+     "required": false,
+     "description": "City, state or postcode, e.g. \"New York\".",
+     "arg": "location"
+    },
+    {
+     "name": "posted_within_days",
+     "type": "integer",
+     "required": false,
+     "description": "Only listings posted in the last N days (1–30).",
+     "min": 1,
+     "max": 30,
+     "arg": "posted_within_days"
+    },
+    {
+     "name": "country",
+     "type": "string",
+     "required": false,
+     "description": "Which Indeed site to search, as an ISO country code: us (default) or another market's code, e.g. it for Italy.",
+     "arg": "country"
+    },
+    {
+     "name": "max_results",
+     "type": "integer",
+     "required": false,
+     "description": "How many jobs to deliver at most (1–300). You pay only for delivered jobs.",
+     "min": 1,
+     "max": 300,
+     "default": 25,
+     "arg": "max_results"
+    }
+   ]
+  }
+ ]
+}
